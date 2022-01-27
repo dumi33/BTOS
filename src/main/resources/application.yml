@@ -1,14 +1,55 @@
-server:
-#  port: 9000 # dev
-  port: 9001 # prod
+spring:
+  profiles:
+    group:
+      "local": "testDB, common"
+      "dev": "testDB, common"
+      "prod": "testDB, prod" # "prodDB, prod"
+
+---
 
 spring:
-  application:
-    name: demo
-
+  config:
+    activate:
+      on-profile: "testDB"
   datasource:
     platform: mysql
-    url: btos.cp3evafquu7f.ap-northeast-2.rds.amazonaws.com/BTOS
-    username: btos
-    password: btos1234
+    url: ${DATASOURCE_URL_TESTDB}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 9000
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prodDB"
+  datasource:
+    platform: mysql
+#    url:
+#    username:
+#    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+
+server:
+  port: 9000
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+server:
+  port: 9001
