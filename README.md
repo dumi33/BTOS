@@ -4,6 +4,12 @@
 - 편지와 답장을 주고 받으며 자신을 알아갑니다. 
 <br>
 
+참여 역할 : spring을 이용한 backend 서버 개발 
+
+
+
+
+
 ### [노션 소개 페이지]
 https://makeus-challenge.oopy.io/537c09cf-8194-4809-943b-88279af2ece9
 
